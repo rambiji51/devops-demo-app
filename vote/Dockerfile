@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir --upgrade "setuptools>=78.1.1" "wheel>=0.46.2"
 
 # dev defines a stage for development, where it'll watch for filesystem changes
 FROM base AS dev
-RUN pip install watchdog
+RUN pip install --no-cache-dir watchdog
 ENV FLASK_ENV=development
 CMD ["python", "app.py"]
 
