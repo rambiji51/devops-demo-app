@@ -41,9 +41,9 @@ jobs:
 
       - name: Trivy scan
         run: |
-          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD/.trivyignore:/.trivyignore" \
             aquasec/trivy:latest image \
-            --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 \
+            --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 --ignorefile /.trivyignore \
             $IMAGE:${{ github.sha }}
 
       - name: Login to GHCR
