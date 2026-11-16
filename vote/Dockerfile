@@ -8,6 +8,7 @@ RUN apt-get update && \
 
 # Set the application directory
 WORKDIR /usr/local/app
+RUN pip install --no-cache-dir --upgrade pip "wheel>=0.46.2" setuptools
 
 # Install our requirements.txt
 COPY requirements.txt ./requirements.txt
